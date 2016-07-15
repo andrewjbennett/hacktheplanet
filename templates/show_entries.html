@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>IRC nick</th>
+    <th>School</th>
+    <th>Age</th>
+  </tr>
+  {% for entry in entries %}
+  {% if entry.verified == 1 %}
+    <tr>
+      <TD>{{ entry.name|safe }}</TD>
+      <TD>{{ entry.nickname|safe }}</TD>
+      <TD>{{ entry.school|safe }}</TD>
+      <TD>{{ entry.age|safe }}</TD>
+    </tr>
+  {% endif %}
+  {% endfor %}
+</table>
+    
+{% endblock %}

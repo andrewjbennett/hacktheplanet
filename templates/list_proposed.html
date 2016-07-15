@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Admin - list proposed</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+
+  <table>
+    <tr>
+      <th>Wargame name</th>
+      <th>Wargame level</th>
+      <th>Proposed flag</th>
+      <th>(edit)</th>
+    </tr>
+  {% for thing in proposed %}
+
+    <tr>
+      <td>{{thing[1]}}</td>
+      <td>{{thing[2]}}</td>
+      <td>{{thing[0].flag}}</td>
+      <td><a href="/admin/edit/{{thing[1]}}/{{thing[2]}}">(edit)</a></td>
+    </tr>
+
+  {% endfor %}
+  </table>
+
+{% endblock %}

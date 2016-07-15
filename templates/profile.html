@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Profile</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <p>Welcome to your profile, {{ user.username|e }}.</p>
+  {% if user.points != 0 %}
+  <p>You have {{user.points}} points! Cool!</p>
+  {% else %}
+  <p>You have {{user.points}} points... better get cracking!</p>
+  {% endif %}
+
+  <p><a href="{{url_for('profile_flags')}}">View points breakdown</a></p>
+
+  <p>This site is used for submitting flags for wargames you complete, which we will work on during this course. When you've solved a wargame, if you come here and submit the flag, you'll get points. Check out the leaderboard for some friendly competition. Good luck!</p>
+
+  <table>
+
+    <tr>
+      <th>Wargame:</th>
+      <th>&nbsp;</th>
+      <th>Current level:</th>
+    </tr>
+  {% for game in max_levels %}
+    <tr>
+      <td><a href="/submit/{{game[2]}}/{{game[1]}}">{{game[2]}}</a></td>
+      <td>&nbsp;</td>
+      <td><a href="/submit/{{game[2]}}/{{game[1]}}">{{game[1]}}</a></td>
+    </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

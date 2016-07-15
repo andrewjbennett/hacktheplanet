@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Admin</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <p>Welcome to the admin section, {{ user.username|e }}.</p>
+
+  <dl>
+    <dt>Add new wargame
+    <dd><a href="{{url_for('add_wargame')}}">Add wargame</a>
+    <dt>List of wargames
+    <dd><a href="{{url_for('list_wargames')}}">List of wargames</a>
+    <dt>List of users
+    <dd><a href="{{url_for('list_users')}}">Users</a>
+    <dt>List proposed
+    <dd><a href="{{url_for('list_proposed')}}">List proposed</a>
+    <dt>Fix points
+    <dd><a href="{{url_for('fix_points')}}">Fix points</a>
+  </dl>
+  
+  <p>Things to add here: a link to the "add flags" thing; a link to the "view submissions" thing</p>
+
+{% endblock %}

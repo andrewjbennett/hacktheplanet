@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Admin - edit flags</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  Level {{form.level.data}}:
+  <form action="{{ url_for('edit_flag', wargame=wargame, level_number=level_number) }}" method=post>
+    {{ form.hidden_tag() }}
+    <dl>
+      <dt>Flag:
+      <dd>{{form.flag(size=120)}}
+      <dt>Points:
+      <dd>{{form.points()}}
+      <dd><input type=submit value=Login>
+   
+    </dl>
+  </form>
+{% endblock %}

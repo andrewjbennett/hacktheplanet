@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Admin - Edit Wargame</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('edit_wargame', wargame=wargame) }}" method=post>
+    {{ form.hidden_tag() }}
+    <dl>
+      <dt>Wargame name:
+      <dd>{{form.name(size=80)}}
+      <dt>Number of levels:
+      <dd>{{form.maxlevel(size=80)}}
+      <dt>Info:
+      <dd>{{form.info(size=400)}}
+      <dd><input type=submit value=Submit>
+   
+    </dl>
+  </form>
+{% endblock %}

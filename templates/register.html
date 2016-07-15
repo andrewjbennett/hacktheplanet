@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Register</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('register') }}" method=post>
+    {{ form.hidden_tag() }}
+    <dl>
+      <dt>Username:
+      <dd>{{form.username(size=80)}}
+      <dt>Password:
+      <dd>{{form.password(size=80)}}
+      <dt>zid:
+      <dd>{{form.zid}}
+      <dt>Email:
+      <dd>{{form.email}}
+      <dt>
+      <dd>{{form.ctfteam()}} I have competed on UNSW's CTF team before</dd>
+      <dd>(If you're not sure, the answer is no)
+      <dd><input type=submit value=Login>
+   
+    </dl>
+  </form>
+{% endblock %}

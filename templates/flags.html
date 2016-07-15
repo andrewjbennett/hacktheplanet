@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Profile</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+
+  Total points: {{user.points}}
+  <table>
+
+    <tr>
+      <th>Wargame name:</th>
+      <th>&nbsp;</th>
+      <th>Current level:</th>
+      <th>&nbsp;</th>
+      <th>Points:</th>
+    </tr>
+  {% for game in flags %}
+    <tr>
+      <td>{{game[1]}}</td>
+      <td>&nbsp;</td>
+      <td>{{game[2]}}</td>
+      <td>&nbsp;</td>
+      <td>{{game[3]}}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Leaderboard</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <p>Welcome to the leaderboard, {{ user.username|e }}.</p>
+
+  <h3>Planet Hackers</h3>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>&nbsp;</th>
+      <th>Points</th>
+    </tr>
+    {% set count = 0 %}
+  {% for user in users %}
+    <tr>
+      <td>{{count}}</td>
+      <td><a href="/profile/{{user.username}}">{{user.username}}</a></td>
+      <td>&nbsp;</td>
+      <td>{{user.points}}</td>
+      {% set count = count + 1 %}
+    </tr>
+    {% endfor %}
+  </table>
+
+  <hr>
+  <h3>9447 hackers</h3>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>&nbsp;</th>
+      <th>Points</th>
+    </tr>
+    {% set count = 0 %}
+  {% for user in ctfteam %}
+    <tr>
+      <td>{{count}}</td>
+      <td><a href="/profile/{{user.username}}">{{user.username}}</a></td>
+      <td>&nbsp;</td>
+      <td>{{user.points}}</td>
+      {% set count = count + 1 %}
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

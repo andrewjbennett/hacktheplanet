@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>IRC nick</th>
+    <th>School</th>
+    <th>Age</th>
+    <th>Verified?</th>
+  </tr>
+  {% for entry in entries %}
+    <tr>
+      <TD>{{ entry.id }}</TD>
+      <TD>{{ entry.name|safe }}</TD>
+      <TD>{{ entry.nickname|safe }}</TD>
+      <TD>{{ entry.school|safe }}</TD>
+      <TD>{{ entry.age }}</TD>
+      <TD>{{ entry.verified }}</TD>
+    </tr>
+  {% endfor %}
+</table>
+
+ <form action="{{ url_for('verify_names') }}" method=post class=add-entry>
+  <dl>
+    <dt>ID:
+    <dd><input type=text size=30 name=id>
+    <dt>Verified:
+    <dd><input type=text size=30 name=verified>
+    <dd><input type=submit value=Share>
+  </dl>
+</form>
+   
+{% endblock %}

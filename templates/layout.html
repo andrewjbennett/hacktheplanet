@@ -1,0 +1,15 @@
+<!doctype html>
+<title>hackthe.planet</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>hackthe.pl[anet] BETA*</h1>
+  <div class=metanav>
+    <a href="/">home</a> {% if g.user.username %} | <a href="/profile">profile</a> | <a href="/leaderboard">leaderboard</a> | <a href="/logout">logout</a> |{% endif %} {% if g.user.role == 1 %} <a href="/admin">admin</a> {% endif %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+
+  {% block body %}{% endblock %}
+  * has bugs
+</div>

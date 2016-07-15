@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Submit flag</h2>
+  {% if error %}
+  <p>If you think this is a mistake click <a href="{{ url_for('propose_flag', wargame=wargame, level_number=level_number) }}">here</a> to dispute this flag as being correct.</p>
+
+<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+
+
+  {{ wargame }}, level {{level_number}}:
+  {% for thing in info %}
+  <p> {{thing|safe}} </p>
+  {% endfor %}
+  <form action="{{ url_for('submit_flag', wargame=wargame, level_number=level_number) }}" method=post>
+    {{ form.hidden_tag() }}
+    <dl>
+      <dt>Flag:
+      <dd>{{form.flag(size=80)}}
+      <dd><input type=submit value=Submit>
+   
+    </dl>
+  </form>
+{% endblock %}
